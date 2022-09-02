@@ -12,13 +12,11 @@ const apiUrl = 'https://whatdoiwatch.herokuapp.com/';
 @Injectable({
   providedIn: 'root',
 })
-
 export class UserRegistrationService {
   constructor(private http: HttpClient) {}
 
   //API call to register a new user
   public userRegistration(userData: any): Observable<any> {
-    console.log(userData);
     return this.http
       .post(apiUrl + 'users', userData)
       .pipe(catchError(this.handleError));
@@ -110,8 +108,10 @@ export class UserRegistrationService {
         `Error Status code ${error.status}, Error body ${error.error}`
       );
     }
+
     return throwError(() => {
-      new Error('Something bad happened; please try again later.');
+      return error.error;
+      // new Error('Something bad happened; please try again later.');
     });
   }
 }
