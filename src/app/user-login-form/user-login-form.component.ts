@@ -10,28 +10,32 @@ import { fetchApiData } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-user-registration-form',
-  templateUrl: './user-registration-form.component.html',
-  styleUrls: ['./user-registration-form.component.scss'],
+  selector: 'app-user-login-form',
+  templateUrl: './user-login-form.component.html',
+  styleUrls: ['./user-login-form.component.scss'],
 })
-export class UserRegistrationFormComponent implements OnInit {
+export class UserLoginFormComponent implements OnInit {
   @Input() userData = { Username: '', Password: '' };
 
   constructor(
     public fetchApiData: fetchApiData,
-    public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
+    public dialogRef: MatDialogRef<UserLoginFormComponent>,
     public snackBar: MatSnackBar
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
 
-  registerUser(): void {
-    this.fetchApiData.userRegistration(this.userData).subscribe({
+  }
+
+  loginUser(): void {
+    this.fetchApiData.userLogin(this.userData).subscribe({
       next: (data) => {
         this.dialogRef.close();
-        this.snackBar.open('User registered successfully', 'OK', {
+        this.snackBar.open('User logged in successfully', 'OK', {
           duration: 2000,
         });
+        localStorage.setItem('user', data.user.Username);
+        localStorage.setItem('token', data.token);
       },
       error: (err) => {
         console.log(err)
@@ -41,4 +45,5 @@ export class UserRegistrationFormComponent implements OnInit {
       },
     });
   }
+
 }

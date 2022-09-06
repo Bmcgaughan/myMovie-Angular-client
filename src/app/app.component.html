@@ -8,5 +8,15 @@
   >
     Sign Up
   </button>
-  <button mat-raised-button color="primary">Log In</button>
+  <button
+    mat-raised-button
+    (click)="openUserLogin()"
+    style="margin-right: 10px"
+    color="primary"
+  >
+    Log In
+  </button>
+  <button mat-raised-button color="primary" (click)="openMoviesDialog()">
+    All Movies
+  </button>
 </div>

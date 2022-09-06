@@ -12,7 +12,7 @@ const apiUrl = 'https://whatdoiwatch.herokuapp.com/';
 @Injectable({
   providedIn: 'root',
 })
-export class UserRegistrationService {
+export class fetchApiData {
   constructor(private http: HttpClient) {}
 
   //API call to register a new user
