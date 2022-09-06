@@ -1,6 +1,33 @@
-<mat-card *ngFor="let movie of movies; let i=index;">
-    <mat-dialog-content>
-        <mat-card-title>{{movie.Title}}</mat-card-title>
-        <mat-card-subtitle><img src={{movie.ImagePath}}/></mat-card-subtitle>
-    </mat-dialog-content>
-</mat-card>
+<div class="card-wrapper">
+  <div class="header-wrapper">
+    <h2>Welcome {{ user }}</h2>
+    <div class="header-actions">
+      <button mat-raised-button style="margin-right: 10px" color="primary">
+        Profile
+      </button>
+      <button mat-raised-button style="margin-right: 10px" color="primary">
+        Log Out
+      </button>
+    </div>
+  </div>
+  <mat-grid-list cols="4" rowHeight="510px">
+    <mat-grid-tile class="tile-content" *ngFor="let movie of movies">
+      <div class="card-content">
+        <div class="card-header">
+          <h2>{{ movie.Title }}</h2>
+        </div>
+        <div class="card-body">
+          <img src="{{ movie.ImagePath }}" alt="movie image" />
+        </div>
+        <div class="card-footer">
+          <div class="footer-content">
+            <button mat-button color="primary">Genre</button>
+            <button mat-button color="primary">Director</button>
+            <button mat-button color="primary">Summary</button>
+            <mat-icon>favorite_border</mat-icon>
+          </div>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

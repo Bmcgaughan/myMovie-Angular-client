@@ -26,7 +26,7 @@ export class AppComponent {
     });
   }
 
-  openMoviesDialog(): void {
+  openMovies(): void {
     this.dialog.open(MovieCardComponent, {
       width: '500px',
     });
