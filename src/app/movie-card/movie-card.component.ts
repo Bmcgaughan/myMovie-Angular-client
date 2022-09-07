@@ -16,7 +16,7 @@ export class MovieCardComponent {
 
   movies: any[] = [];
   user: any = '';
-  favorites: any [] = JSON.parse(localStorage.getItem('user_favorites') || '[]');
+  favorites: any[] = JSON.parse(localStorage.getItem('user_favorites') || '[]');
 
   constructor(
     public fetchApiData: fetchApiData,
@@ -28,7 +28,6 @@ export class MovieCardComponent {
   ngOnInit(): void {
     this.getMovies();
     this.user = localStorage.getItem('user');
-    console.log(this.favorites);
   }
 
   getMovies(): void {
@@ -45,8 +44,35 @@ export class MovieCardComponent {
 
   showGenreDialog(movie: any): void {
     this.dialog.open(MovieDetailsComponent, {
-      data: 
-        movie,
+      data: movie,
     });
+  }
+
+  logoutUser(): void {
+    localStorage.clear();
+    alert('You have successfully logged out');
+    this.router.navigate(['']);
+  }
+
+  toggleFavorite(movie: any): void {
+    if (this.favorites.includes(movie)) {
+      this.favorites = this.favorites.filter((item) => item !== movie);
+      localStorage.setItem('user_favorites', JSON.stringify(this.favorites));
+      this.fetchApiData
+        .removeFavorite(this.user, movie)
+        .subscribe((resp: any) => {
+          this.snackBar.open('Movie Removed from Favorites', 'OK', {
+            duration: 2000,
+          });
+        });
+    } else {
+      this.favorites.push(movie);
+      localStorage.setItem('user_favorites', JSON.stringify(this.favorites));
+      this.fetchApiData.addFavorite(this.user, movie).subscribe((resp: any) => {
+        this.snackBar.open('Movie Added to Favorites', 'OK', {
+          duration: 2000,
+        });
+      });
+    }
   }
 }

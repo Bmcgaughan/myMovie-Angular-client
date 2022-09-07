@@ -64,8 +64,9 @@ export class fetchApiData {
   addFavorite(userName: any, id: any): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .post(apiUrl + `users/${userName}/favorites/${id}`, {
+      .post(apiUrl + `users/${userName}/favorites/${id}`, null, {
         headers: new HttpHeaders({ Authorization: `Bearer ${token}` }),
+        
       })
       .pipe(catchError(this.handleError));
   }

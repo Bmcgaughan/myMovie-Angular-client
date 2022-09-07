@@ -36,7 +36,8 @@
 .card-footer {
   position: absolute;
   bottom: 0;
-  left: 20px;
+  left: 50%;
+  transform: translate(-50%);
 }
 
 .footer-content {
@@ -51,6 +52,10 @@
 
 mat-icon {
   color: red
+}
+
+mat-icon:hover {
+  cursor: pointer;
 }
 
 .header-wrapper {

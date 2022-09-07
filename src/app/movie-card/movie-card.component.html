@@ -5,7 +5,12 @@
       <button mat-raised-button style="margin-right: 10px" color="primary">
         Profile
       </button>
-      <button mat-raised-button style="margin-right: 10px" color="primary">
+      <button
+        mat-raised-button
+        style="margin-right: 10px"
+        color="primary"
+        (click)="logoutUser()"
+      >
         Log Out
       </button>
     </div>
@@ -23,11 +28,14 @@
           <p>{{ movie.Network }}</p>
           <div class="footer-content">
             <button mat-button color="primary" (click)="showGenreDialog(movie)">
-              Genre
+              More Details
             </button>
-            <button mat-button color="primary">Director</button>
-            <button mat-button color="primary">Summary</button>
-            <mat-icon >{{favorites.includes(movie._id) ? 'favorite' : 'favorite_border'}}</mat-icon>
+            <!-- <button mat-button color="primary">Director</button>
+            <button mat-button color="primary">Summary</button> -->
+           
+            <mat-icon (click)="toggleFavorite(movie._id)">{{
+              favorites.includes(movie._id) ? "favorite" : "favorite_border"
+            }}</mat-icon>
           </div>
         </div>
       </div>
