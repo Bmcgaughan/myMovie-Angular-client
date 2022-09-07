@@ -8,13 +8,11 @@ import { MovieDetailsComponent } from '../movie-details/movie-details.component'
 import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
-  selector: 'app-movie-card',
-  templateUrl: './movie-card.component.html',
-  styleUrls: ['./movie-card.component.scss'],
+  selector: 'app-main-view',
+  templateUrl: './main-view.component.html',
+  styleUrls: ['./main-view.component.scss'],
 })
-export class MovieCardComponent {
-  @Input() movieDetails: any = {};
-
+export class MainViewComponent implements OnInit {
   movies: any[] = [];
   user: any = '';
   favorites: any[] = JSON.parse(localStorage.getItem('user_favorites') || '[]');
@@ -30,7 +28,7 @@ export class MovieCardComponent {
     this.getMovies();
     this.user = localStorage.getItem('user');
   }
-
+  
   getMovies(): void {
     let token = localStorage.getItem('token');
     if (!token) {
@@ -43,31 +41,4 @@ export class MovieCardComponent {
     });
   }
 
-  showGenreDialog(movie: any): void {
-    this.dialog.open(MovieDetailsComponent, {
-      data: movie,
-    });
-  }
-
-  toggleFavorite(movie: any): void {
-    if (this.favorites.includes(movie)) {
-      this.favorites = this.favorites.filter((item) => item !== movie);
-      localStorage.setItem('user_favorites', JSON.stringify(this.favorites));
-      this.fetchApiData
-        .removeFavorite(this.user, movie)
-        .subscribe((resp: any) => {
-          this.snackBar.open('Movie Removed from Favorites', 'OK', {
-            duration: 2000,
-          });
-        });
-    } else {
-      this.favorites.push(movie);
-      localStorage.setItem('user_favorites', JSON.stringify(this.favorites));
-      this.fetchApiData.addFavorite(this.user, movie).subscribe((resp: any) => {
-        this.snackBar.open('Movie Added to Favorites', 'OK', {
-          duration: 2000,
-        });
-      });
-    }
-  }
 }
