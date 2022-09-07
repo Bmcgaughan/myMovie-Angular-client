@@ -16,7 +16,7 @@ export class MovieCardComponent {
   @Input() movieDetails: any = {};
   @Input() movie: any = {};
 
-  user: any = '';
+  user: any = localStorage.getItem('user');
   favorites: any[] = JSON.parse(localStorage.getItem('user_favorites') || '[]');
 
   constructor(
@@ -26,9 +26,7 @@ export class MovieCardComponent {
     public router: Router
   ) {}
 
-  ngOnInit(): void {
-    console.log(this.movie);
-  }
+  ngOnInit(): void {}
 
   fontSize(title: string): string {
     if (title.length > 25) {
@@ -37,8 +35,6 @@ export class MovieCardComponent {
       return '1rem';
     }
     return '1.25rem';
-
-    
   }
 
   showGenreDialog(movie: any): void {
