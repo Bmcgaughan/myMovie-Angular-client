@@ -10,7 +10,6 @@ import { fetchApiData } from '../fetch-api-data.service';
 
 // This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Token } from '@angular/compiler';
 
 @Component({
   selector: 'app-user-login-form',
@@ -39,6 +38,7 @@ export class UserLoginFormComponent implements OnInit {
           duration: 2000,
         });
         localStorage.setItem('user', data.user.Username);
+        localStorage.setItem('user_favorites', JSON.stringify(data.user.FavoriteMovies));
         localStorage.setItem('token', data.token);
         this.router.navigate(['movies']);
 
@@ -46,7 +46,7 @@ export class UserLoginFormComponent implements OnInit {
       error: (err) => {
         console.log(err)
         this.snackBar.open(err, 'OK', {
-          duration: 2000,
+
         });
       },
     });

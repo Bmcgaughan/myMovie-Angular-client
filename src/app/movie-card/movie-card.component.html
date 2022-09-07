@@ -20,11 +20,14 @@
           <img src="{{ movie.ImagePath }}" alt="movie image" />
         </div>
         <div class="card-footer">
+          <p>{{ movie.Network }}</p>
           <div class="footer-content">
-            <button mat-button color="primary">Genre</button>
+            <button mat-button color="primary" (click)="showGenreDialog(movie)">
+              Genre
+            </button>
             <button mat-button color="primary">Director</button>
             <button mat-button color="primary">Summary</button>
-            <mat-icon>favorite_border</mat-icon>
+            <mat-icon >{{favorites.includes(movie._id) ? 'favorite' : 'favorite_border'}}</mat-icon>
           </div>
         </div>
       </div>

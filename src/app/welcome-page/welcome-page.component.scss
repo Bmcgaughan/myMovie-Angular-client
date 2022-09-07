@@ -1,0 +1,38 @@
+.welcome-wrapper {
+  background: url("../../assets/back.jpg") no-repeat center center fixed;
+  min-height: 100%;
+
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.content {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-page {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 300px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.login-bar {
+    padding-bottom: 50px;
+}
+
+.header-bar {
+    padding-top: 50px;
+}
