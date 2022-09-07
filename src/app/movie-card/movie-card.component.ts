@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { MovieDetailsComponent } from '../movie-details/movie-details.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-movie-card',
@@ -48,11 +49,7 @@ export class MovieCardComponent {
     });
   }
 
-  logoutUser(): void {
-    localStorage.clear();
-    alert('You have successfully logged out');
-    this.router.navigate(['']);
-  }
+
 
   toggleFavorite(movie: any): void {
     if (this.favorites.includes(movie)) {

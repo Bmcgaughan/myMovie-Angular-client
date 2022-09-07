@@ -1,7 +1,6 @@
-.card-wrapper {
+.movie-display-wrapper {
   width: 95%;
   margin: 0 auto;
-  color: white;
 }
 
 .card-content {
@@ -28,6 +27,10 @@
   text-align: center;
 }
 
+.card-header h2 {
+  margin: 0;
+}
+
 .card-body img {
   width: 250px;
   height: auto;
@@ -51,28 +54,9 @@
 }
 
 mat-icon {
-  color: red
+  color: red;
 }
 
 mat-icon:hover {
   cursor: pointer;
-}
-
-.header-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-.header-wrapper h2 {
-  margin: 0;
-}
-
-.header-actions {
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
 }

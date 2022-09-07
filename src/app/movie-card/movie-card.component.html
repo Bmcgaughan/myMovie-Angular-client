@@ -1,31 +1,17 @@
-<div class="card-wrapper">
-  <div class="header-wrapper">
-    <h2>Welcome {{ user }}</h2>
-    <div class="header-actions">
-      <button mat-raised-button style="margin-right: 10px" color="primary">
-        Profile
-      </button>
-      <button
-        mat-raised-button
-        style="margin-right: 10px"
-        color="primary"
-        (click)="logoutUser()"
-      >
-        Log Out
-      </button>
-    </div>
-  </div>
+
+<app-navbar></app-navbar>
+<div class="movie-display-wrapper">
   <mat-grid-list cols="4" rowHeight="510px">
     <mat-grid-tile class="tile-content" *ngFor="let movie of movies">
       <div class="card-content">
         <div class="card-header">
           <h2>{{ movie.Title }}</h2>
+          <p>{{ movie.Network }}</p>
         </div>
         <div class="card-body">
           <img src="{{ movie.ImagePath }}" alt="movie image" />
         </div>
         <div class="card-footer">
-          <p>{{ movie.Network }}</p>
           <div class="footer-content">
             <button mat-button color="primary" (click)="showGenreDialog(movie)">
               More Details
