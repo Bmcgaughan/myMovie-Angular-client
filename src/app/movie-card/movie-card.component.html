@@ -1,30 +1,20 @@
+<div class="card-content">
+  <div class="card-header">
+    <h2 [style.fontSize]="fontSize(movie.Title)">{{ movie.Title }}</h2>
+    <p>{{ movie.Network }}</p>
+  </div>
+  <div class="card-body">
+    <img src="{{ movie.ImagePath }}" alt="movie image" />
+  </div>
+  <div class="card-footer">
+    <div class="footer-content">
+      <button mat-button color="primary" (click)="showGenreDialog(movie)">
+        More Details
+      </button>
 
-<app-navbar></app-navbar>
-<div class="movie-display-wrapper">
-  <mat-grid-list cols="4" rowHeight="510px">
-    <mat-grid-tile class="tile-content" *ngFor="let movie of movies">
-      <div class="card-content">
-        <div class="card-header">
-          <h2>{{ movie.Title }}</h2>
-          <p>{{ movie.Network }}</p>
-        </div>
-        <div class="card-body">
-          <img src="{{ movie.ImagePath }}" alt="movie image" />
-        </div>
-        <div class="card-footer">
-          <div class="footer-content">
-            <button mat-button color="primary" (click)="showGenreDialog(movie)">
-              More Details
-            </button>
-            <!-- <button mat-button color="primary">Director</button>
-            <button mat-button color="primary">Summary</button> -->
-           
-            <mat-icon (click)="toggleFavorite(movie._id)">{{
-              favorites.includes(movie._id) ? "favorite" : "favorite_border"
-            }}</mat-icon>
-          </div>
-        </div>
-      </div>
-    </mat-grid-tile>
-  </mat-grid-list>
+      <mat-icon (click)="toggleFavorite(movie._id)">{{
+        favorites.includes(movie._id) ? "favorite" : "favorite_border"
+      }}</mat-icon>
+    </div>
+  </div>
 </div>

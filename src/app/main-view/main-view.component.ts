@@ -4,7 +4,7 @@ import { fetchApiData } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { MovieDetailsComponent } from '../movie-details/movie-details.component';
+import { MovieCardComponent } from '../movie-card/movie-card.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
@@ -28,7 +28,7 @@ export class MainViewComponent implements OnInit {
     this.getMovies();
     this.user = localStorage.getItem('user');
   }
-  
+
   getMovies(): void {
     let token = localStorage.getItem('token');
     if (!token) {

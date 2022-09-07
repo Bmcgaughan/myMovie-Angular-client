@@ -14,8 +14,8 @@ import { NavbarComponent } from '../navbar/navbar.component';
 })
 export class MovieCardComponent {
   @Input() movieDetails: any = {};
+  @Input() movie: any = {};
 
-  movies: any[] = [];
   user: any = '';
   favorites: any[] = JSON.parse(localStorage.getItem('user_favorites') || '[]');
 
@@ -27,20 +27,18 @@ export class MovieCardComponent {
   ) {}
 
   ngOnInit(): void {
-    this.getMovies();
-    this.user = localStorage.getItem('user');
+    console.log(this.movie);
   }
 
-  getMovies(): void {
-    let token = localStorage.getItem('token');
-    if (!token) {
-      alert('Please login to view movies');
-      this.router.navigate(['']);
+  fontSize(title: string): string {
+    if (title.length > 25) {
+      return '0.9rem';
+    } else if (title.length > 20) {
+      return '1rem';
     }
-    this.fetchApiData.getAllMovies().subscribe((resp: any) => {
-      this.movies = resp;
-      return this.movies;
-    });
+    return '1.25rem';
+
+    
   }
 
   showGenreDialog(movie: any): void {
