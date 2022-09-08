@@ -17,6 +17,8 @@ export class MainViewComponent implements OnInit {
   movies: any[] = [];
   user: any = '';
   favorites: any[] = JSON.parse(localStorage.getItem('user_favorites') || '[]');
+  breakpoint: number = 4;
+  rowHeight: string = '500px';
 
   constructor(
     public fetchApiData: fetchApiData,
@@ -28,7 +30,31 @@ export class MainViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMovies();
+
     this.user = localStorage.getItem('user');
+    if (window.innerWidth <= 400) {
+      this.breakpoint = 1;
+      this.rowHeight = '350px';
+    } else if (window.innerWidth <= 700) {
+      this.breakpoint = 2;
+      this.rowHeight = '400px';
+    } else if (window.innerWidth <= 1000) {
+      this.breakpoint = 4;
+      this.rowHeight = '500px';
+    }
+  }
+
+  onResize(event: any) {
+    if (event.target.innerWidth <= 430) {
+      this.breakpoint = 1;
+      this.rowHeight = '300px';
+    } else if (event.target.innerWidth <= 770) {
+      this.breakpoint = 3;
+      this.rowHeight = '350px';
+    } else if (event.target.innerWidth >= 1000) {
+      this.breakpoint = 4;
+      this.rowHeight = '500px';
+    }
   }
 
   getMovies(): void {
@@ -39,7 +65,7 @@ export class MainViewComponent implements OnInit {
     }
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
-      this.myService.data = resp
+      this.myService.data = resp;
       return this.movies;
     });
   }

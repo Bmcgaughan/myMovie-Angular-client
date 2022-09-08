@@ -23,3 +23,23 @@
   align-items: flex-end;
   justify-content: flex-end;
 }
+
+//media
+@media (max-width: 768px) {
+  .header-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+
+  .header-actions button {
+    margin-bottom: 2px;
+  }
+}
+
+@media (max-width: 430px) {
+  .card-wrapper {
+    width: 100%;
+  }
+}

@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <div class="movie-display-wrapper">
-  <mat-grid-list cols="4" rowHeight="510px">
+  <mat-grid-list [cols]="breakpoint" [rowHeight]="rowHeight" (window:resize)="onResize($event)">
     <mat-grid-tile class="tile-content" *ngFor="let movie of movies">
       <app-movie-card [movie]="movie"></app-movie-card>
     </mat-grid-tile>

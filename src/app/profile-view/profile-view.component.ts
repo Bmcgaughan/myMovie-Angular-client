@@ -19,6 +19,8 @@ import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 export class ProfileViewComponent implements OnInit {
   user: any = {};
   userFavorites: any = [];
+  breakpoint: number = 4;
+  rowHeight: string = '500px';
 
   //grabbing movies from service which is populated by the main view component
   allMovies = this.mysrvc.data;
@@ -37,6 +39,29 @@ export class ProfileViewComponent implements OnInit {
     }
     this.loadUser();
     this.populateFavorites();
+    if (window.innerWidth <= 400) {
+      this.breakpoint = 1;
+      this.rowHeight = '300px';
+    } else if (window.innerWidth <= 700) {
+      this.breakpoint = 2;
+      this.rowHeight = '400px';
+    } else if (window.innerWidth <= 1000) {
+      this.breakpoint = 4;
+      this.rowHeight = '500px';
+    }
+  }
+
+  onResize(event: any) {
+    if (event.target.innerWidth <= 430) {
+      this.breakpoint = 2;
+      this.rowHeight = '300px';
+    } else if (event.target.innerWidth <= 770) {
+      this.breakpoint = 3;
+      this.rowHeight = '350px';
+    } else if (event.target.innerWidth >= 1000) {
+      this.breakpoint = 4;
+      this.rowHeight = '500px';
+    }
   }
 
   loadUser(): void {

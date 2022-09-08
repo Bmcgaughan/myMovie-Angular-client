@@ -28,7 +28,7 @@
     </div>
   </div>
   <h2 class="fav-header">My Favorites ({{userFavorites.length}}):</h2>
-  <mat-grid-list cols="4" rowHeight="510px">
+  <mat-grid-list [cols]="breakpoint" [rowHeight]="rowHeight" (window:resize)="onResize($event)">
     <mat-grid-tile class="tile-content" *ngFor="let movie of userFavorites">
       <app-movie-card [movie]="movie"></app-movie-card>
     </mat-grid-tile>
