@@ -7,16 +7,27 @@
     <div class="profile-info">
       <h1>Username: {{ user.Username }}</h1>
       <div class="profile-actions">
-        <button class="profile-button" mat-raised-button style="margin-right: 10px" color="primary">
+        <button
+          class="profile-button"
+          mat-raised-button
+          style="margin-right: 10px"
+          color="primary"
+          (click)="editProfileDialog()"
+        >
           Edit Profile
         </button>
-        <button class="profile-button btn-delete" mat-raised-button style="margin-right: 10px">
+        <button
+          class="profile-button btn-delete"
+          mat-raised-button
+          style="margin-right: 10px"
+          (click)="deleteUser()"
+        >
           Delete Account
         </button>
       </div>
     </div>
   </div>
-  <h2 class="fav-header">My Favorites:</h2>
+  <h2 class="fav-header">My Favorites ({{userFavorites.length}}):</h2>
   <mat-grid-list cols="4" rowHeight="510px">
     <mat-grid-tile class="tile-content" *ngFor="let movie of userFavorites">
       <app-movie-card [movie]="movie"></app-movie-card>

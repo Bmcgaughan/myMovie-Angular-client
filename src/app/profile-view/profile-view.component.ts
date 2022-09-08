@@ -9,6 +9,8 @@ import { MyService } from 'src/service';
 
 import { Router } from '@angular/router';
 
+import { EditProfileComponent } from '../edit-profile/edit-profile.component';
+
 @Component({
   selector: 'app-profile-view',
   templateUrl: './profile-view.component.html',
@@ -54,6 +56,12 @@ export class ProfileViewComponent implements OnInit {
     });
   }
 
+  editProfileDialog(): void {
+    this.dialog.open(EditProfileComponent, {
+      width: '400px',
+    });
+  }
+
   deleteUser(): void {
     if (
       confirm(
@@ -61,12 +69,20 @@ export class ProfileViewComponent implements OnInit {
       )
     ) {
       const user = localStorage.getItem('user');
-      this.fetchApiData.deleteUser(user).subscribe((resp: any) => {
-        this.snackBar.open('Account Deleted', 'OK', {
-          duration: 2000,
-        });
-        localStorage.clear();
-        this.router.navigate(['']);
+      this.fetchApiData.deleteUser(user).subscribe({
+        next: (data) => {
+          this.snackBar.open('Account Deleted', 'OK', {
+            duration: 2000,
+          });
+          localStorage.clear();
+          this.router.navigate(['']);
+        },
+        error: (err) => {
+          console.log(err);
+          this.snackBar.open('Something went wrong...', 'OK', {
+            duration: 2000,
+          });
+        },
       });
     }
   }

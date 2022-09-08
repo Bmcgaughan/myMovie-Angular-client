@@ -1,0 +1,30 @@
+.mat-card-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mat-card-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-form-field {
+    width: 300px;
+}
+
+.mat-card-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-button {
+    width: 100px;
+}
+
+.btn-cancel {
+    color: white;
+    background-color: red;
+}

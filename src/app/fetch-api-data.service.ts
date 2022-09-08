@@ -84,6 +84,7 @@ export class fetchApiData {
   //API Endpoint to update user Details
   updateUser(userName: any, userData: any): Observable<any> {
     const token = localStorage.getItem('token');
+    console.log(userName, userData);
     return this.http
       .put(apiUrl + `users/${userName}`, userData, {
         headers: new HttpHeaders({ Authorization: `Bearer ${token}` }),
@@ -97,6 +98,7 @@ export class fetchApiData {
     return this.http
       .delete(apiUrl + `users/${userName}`, {
         headers: new HttpHeaders({ Authorization: `Bearer ${token}` }),
+        responseType: 'text',
       })
       .pipe(catchError(this.handleError));
   }
