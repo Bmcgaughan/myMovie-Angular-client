@@ -21,4 +21,11 @@ export class NavbarComponent implements OnInit {
     alert('You have successfully logged out');
     this.router.navigate(['']);
   }
+  loadProfile(): void {
+    this.router.navigate(['profile']);
+  }
+
+  loadMovies(): void {
+    this.router.navigate(['movies']);
+  }
 }

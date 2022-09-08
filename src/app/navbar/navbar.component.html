@@ -2,7 +2,20 @@
   <div class="header-wrapper">
     <h2>Welcome {{ user }}</h2>
     <div class="header-actions">
-      <button mat-raised-button style="margin-right: 10px" color="primary">
+      <button
+        mat-raised-button
+        style="margin-right: 10px"
+        color="primary"
+        (click)="loadMovies()"
+      >
+        Home (All Movies)
+      </button>
+      <button
+        mat-raised-button
+        style="margin-right: 10px"
+        color="primary"
+        (click)="loadProfile()"
+      >
         Profile
       </button>
       <button

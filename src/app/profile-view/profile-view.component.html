@@ -1,1 +1,25 @@
-<p>profile-view works!</p>
+<app-navbar></app-navbar>
+<div class="profile-display-wrapper">
+  <div class="profile-data">
+    <div class="profile-image">
+      <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" />
+    </div>
+    <div class="profile-info">
+      <h1>Username: {{ user.Username }}</h1>
+      <div class="profile-actions">
+        <button class="profile-button" mat-raised-button style="margin-right: 10px" color="primary">
+          Edit Profile
+        </button>
+        <button class="profile-button btn-delete" mat-raised-button style="margin-right: 10px">
+          Delete Account
+        </button>
+      </div>
+    </div>
+  </div>
+  <h2 class="fav-header">My Favorites:</h2>
+  <mat-grid-list cols="4" rowHeight="510px">
+    <mat-grid-tile class="tile-content" *ngFor="let movie of userFavorites">
+      <app-movie-card [movie]="movie"></app-movie-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

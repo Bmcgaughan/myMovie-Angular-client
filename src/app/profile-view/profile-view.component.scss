@@ -1,0 +1,46 @@
+.profile-display-wrapper {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.profile-data {
+  display: flex;
+  flex-direction: row;
+  height: 150px;
+  width: 100%;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 50px;
+  color: white;
+}
+
+.profile-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.profile-image img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+}
+
+.fav-header {
+  color: white;
+  margin-top: 25px;
+  padding-left: 15px;
+}
+.btn-delete {
+  color: white;
+  background-color: red;
+}
+
+.profile-button {
+  width: 150px;
+}

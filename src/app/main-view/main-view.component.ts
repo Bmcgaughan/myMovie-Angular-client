@@ -1,11 +1,12 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+
 import { fetchApiData } from '../fetch-api-data.service';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { MovieCardComponent } from '../movie-card/movie-card.component';
-import { NavbarComponent } from '../navbar/navbar.component';
+
+import { MyService } from 'src/service';
 
 @Component({
   selector: 'app-main-view',
@@ -21,7 +22,8 @@ export class MainViewComponent implements OnInit {
     public fetchApiData: fetchApiData,
     public snackBar: MatSnackBar,
     public dialog: MatDialog,
-    public router: Router
+    public router: Router,
+    private myService: MyService
   ) {}
 
   ngOnInit(): void {
@@ -37,8 +39,8 @@ export class MainViewComponent implements OnInit {
     }
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
+      this.myService.data = resp
       return this.movies;
     });
   }
-
 }

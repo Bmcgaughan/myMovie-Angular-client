@@ -31,10 +31,8 @@ export class MovieCardComponent {
   fontSize(title: string): string {
     if (title.length > 25) {
       return '0.9rem';
-    } else if (title.length > 20) {
-      return '1rem';
-    }
-    return '1.25rem';
+    } 
+    return '1rem';
   }
 
   showGenreDialog(movie: any): void {

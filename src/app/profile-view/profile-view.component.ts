@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { fetchApiData } from '../fetch-api-data.service';
 
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+
+import { MyService } from 'src/service';
 
 import { Router } from '@angular/router';
 
@@ -14,16 +16,25 @@ import { Router } from '@angular/router';
 })
 export class ProfileViewComponent implements OnInit {
   user: any = {};
+  userFavorites: any = [];
+
+  //grabbing movies from service which is populated by the main view component
+  allMovies = this.mysrvc.data;
 
   constructor(
     public fetchApiData: fetchApiData,
     public dialog: MatDialog,
     public router: Router,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private mysrvc: MyService
   ) {}
 
   ngOnInit(): void {
+    if (!this.allMovies || this.allMovies.length == 0) {
+      this.router.navigate(['movies']);
+    }
     this.loadUser();
+    this.populateFavorites();
   }
 
   loadUser(): void {
@@ -31,6 +42,15 @@ export class ProfileViewComponent implements OnInit {
     this.fetchApiData.getUserInfo(user).subscribe((resp: any) => {
       this.user = resp;
       return this.user;
+    });
+  }
+
+  populateFavorites(): void {
+    let userData = localStorage.getItem('user_favorites');
+    this.allMovies.forEach((movie: any) => {
+      if (userData?.includes(movie._id)) {
+        this.userFavorites.push(movie);
+      }
     });
   }
 
