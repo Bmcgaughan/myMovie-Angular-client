@@ -18,7 +18,7 @@ export class MovieCardComponent {
 
   user: any = localStorage.getItem('user');
   favorites: any[] = JSON.parse(localStorage.getItem('user_favorites') || '[]');
-
+/** @constructor */
   constructor(
     public fetchApiData: fetchApiData,
     public snackBar: MatSnackBar,
@@ -35,11 +35,21 @@ export class MovieCardComponent {
     return '1rem';
   }
 
+  /** 
+  * This function is used to show the movie details dialog
+  * @function showGenreDialog
+  */
+
   showGenreDialog(movie: any): void {
     this.dialog.open(MovieDetailsComponent, {
       data: movie,
     });
   }
+
+  /**
+  * This function is used to add a movie to the user's favorites or remove
+  * @function toggleFavorite
+  */
 
   toggleFavorite(movie: any): void {
     if (this.favorites.includes(movie)) {

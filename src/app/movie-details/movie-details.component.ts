@@ -11,6 +11,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./movie-details.component.scss'],
 })
 export class MovieDetailsComponent implements OnInit {
+  /** @constructor */
   constructor(
     public dialogRef: MatDialogRef<MovieDetailsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any

@@ -25,6 +25,7 @@ export class ProfileViewComponent implements OnInit {
   //grabbing movies from service which is populated by the main view component
   allMovies = this.mysrvc.data;
 
+  /** @constructor */
   constructor(
     public fetchApiData: fetchApiData,
     public dialog: MatDialog,
@@ -64,6 +65,10 @@ export class ProfileViewComponent implements OnInit {
     }
   }
 
+  /**
+   * This function is used to get the user's profile information
+   * @function loadUser
+   */
   loadUser(): void {
     const user = localStorage.getItem('user');
     this.fetchApiData.getUserInfo(user).subscribe((resp: any) => {
@@ -71,6 +76,11 @@ export class ProfileViewComponent implements OnInit {
       return this.user;
     });
   }
+
+  /**
+   * This function is used to get the user's favorite movies
+   * @function populateFavorites
+   */
 
   populateFavorites(): void {
     let userData = localStorage.getItem('user_favorites');
@@ -87,6 +97,10 @@ export class ProfileViewComponent implements OnInit {
     });
   }
 
+  /**
+   * This function is used to delete a user Account
+   *  @function deleteUser
+   */
   deleteUser(): void {
     if (
       confirm(

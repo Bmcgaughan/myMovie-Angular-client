@@ -10,17 +10,23 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
   user: any = '';
 
+  /** @constructor */
   constructor(public router: Router) {}
 
   ngOnInit(): void {
     this.user = localStorage.getItem('user');
   }
 
+  /**
+   * This function is used to log the user out
+   * @function logoutUser
+   */
   logoutUser(): void {
     localStorage.clear();
     alert('You have successfully logged out');
     this.router.navigate(['']);
   }
+  
   loadProfile(): void {
     this.router.navigate(['profile']);
   }

@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./welcome-page.component.scss'],
 })
 export class WelcomePageComponent implements OnInit {
+  /** @constructor */
   constructor(public dialog: MatDialog, public router: Router) {}
   ngOnInit(): void {
     let token = localStorage.getItem('token');
@@ -18,12 +19,24 @@ export class WelcomePageComponent implements OnInit {
       this.router.navigate(['movies']);
     }
   }
+
+  /**
+   * This function is used to open the user registration dialog
+   * @function openUserRegistration
+   */
+
   openUserRegistration(): void {
     this.dialog.open(UserRegistrationFormComponent, {
       width: '380px',
       height: '320px',
     });
   }
+
+  /**
+   * This function is used to open the user login dialog
+   * @function openUserLogin
+   */
+
   openUserLogin(): void {
     this.dialog.open(UserLoginFormComponent, {
       width: '380px',

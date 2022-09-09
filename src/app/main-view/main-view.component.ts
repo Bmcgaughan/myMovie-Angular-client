@@ -20,6 +20,7 @@ export class MainViewComponent implements OnInit {
   breakpoint: number = 4;
   rowHeight: string = '500px';
 
+  /** @constructor */
   constructor(
     public fetchApiData: fetchApiData,
     public snackBar: MatSnackBar,
@@ -44,6 +45,12 @@ export class MainViewComponent implements OnInit {
     }
   }
 
+  /**
+   * Used to re-scale the grid of movies when the screen size changes
+   * @param event
+   * @returns void
+   */
+
   onResize(event: any) {
     if (event.target.innerWidth <= 430) {
       this.breakpoint = 1;
@@ -56,6 +63,12 @@ export class MainViewComponent implements OnInit {
       this.rowHeight = '500px';
     }
   }
+
+  /**
+   * This function gets all the movies from the database
+   * @function getMovies
+   * @returns void
+   */
 
   getMovies(): void {
     let token = localStorage.getItem('token');
